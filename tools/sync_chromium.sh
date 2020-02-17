@@ -3,8 +3,8 @@
 set -e
 
 PRO_DIR="/home/chiashuen/TEMP/Chromium"
-BASE_DIR="/home/chiashuen/THExplorer/src"
-RELEASE_DIR="${BASE_DIR}/out/arm64-release"
+BASE_DIR="/home/chiashuen/chromium/src"
+RELEASE_DIR="${BASE_DIR}/out/x64-release"
 APP_DIR="${PRO_DIR}/app"
 MODULES_DIR="${PRO_DIR}"
 
@@ -1113,7 +1113,7 @@ sync_libs() {
 }
 
 sync_jniLibs() {
-	local jni_libs_dir="${APP_DIR}/src/main/jniLibs/armeabi-v7a"
+	local jni_libs_dir="${APP_DIR}/src/main/jniLibs/x64"
 	mkdir -p "$jni_libs_dir"
 	cp ${RELEASE_DIR}/*.so "$jni_libs_dir"
 }
