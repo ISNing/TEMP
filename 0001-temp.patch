@@ -1,0 +1,25 @@
+From 00864955b5a2512aa8458c94f551c21668581ddf Mon Sep 17 00:00:00 2001
+From: SF2005 <1208733578@qq.com>
+Date: Tue, 18 Feb 2020 02:21:16 +0800
+Subject: [PATCH] temp
+
+---
+ tools/sync_chromium.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/sync_chromium.sh b/tools/sync_chromium.sh
+index 5e47416..69bf53b 100755
+--- a/tools/sync_chromium.sh
++++ b/tools/sync_chromium.sh
+@@ -70,7 +70,7 @@ sync_features() {
+ 
+ 	mkdir -p ${MODULES_DIR}/features/autofill_assistant/src/main/res
+         mkdir -p ${MODULES_DIR}/features/autofill_assistant/src/main/res_poodle
+-        mkdir -p ${MODULES_DIR}/features/keyboard_accessory/src/mainres
++        mkdir -p ${MODULES_DIR}/features/keyboard_accessory/src/main/res
+         mkdir -p ${MODULES_DIR}/features/media_router/src/main/res
+         mkdir -p ${MODULES_DIR}/features/start_surface/src/main/explore_res
+         mkdir -p ${MODULES_DIR}/features/start_surface/src/main/res
+-- 
+2.11.0
+

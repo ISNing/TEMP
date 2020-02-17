@@ -4,7 +4,7 @@ set -e
 
 PRO_DIR="/home/chiashuen/TEMP/Chromium"
 BASE_DIR="/home/chiashuen/chromium/src"
-RELEASE_DIR="${BASE_DIR}/out/x64-release"
+RELEASE_DIR="${BASE_DIR}/out/arm64-release"
 APP_DIR="${PRO_DIR}/app"
 MODULES_DIR="${PRO_DIR}"
 
@@ -1095,10 +1095,10 @@ sync_assets() {
 	mkdir -p "${asset_dir}/locales"
 
 	cp ${RELEASE_DIR}/*.dat \
-		${RELEASE_DIR}/gen/chrome/android/chrome_apk_paks/*.pak \
+		${RELEASE_DIR}/gen/chrome/android/monochrome_apk_paks/*.pak \
 		"$asset_dir"
 
-	cp ${RELEASE_DIR}/gen/chrome/android/chrome_apk_paks/locales/* \
+	cp ${RELEASE_DIR}/gen/chrome/android/monochrome_apk_paks/locales/* \
 		"${asset_dir}/locales"
 	cp ${RELEASE_DIR}/snapshot_blob.bin "$asset_dir"/snapshot_blob_32.bin
 }
@@ -1112,7 +1112,7 @@ sync_libs() {
 }
 
 sync_jniLibs() {
-	local jni_libs_dir="${APP_DIR}/src/main/jniLibs/x64"
+	local jni_libs_dir="${APP_DIR}/src/main/jniLibs/arm64-v8a"
 	mkdir -p "$jni_libs_dir"
 	cp ${RELEASE_DIR}/*.so "$jni_libs_dir"
 }
@@ -1143,7 +1143,7 @@ clean_project() {
 	langs="$langs|ja|ko|lt|lv|nb|nl|pl|pt-rBR|pt-rPT|ro|ru|sk|sl|sr|sv|sw|th|tl|tr|uk|vi"
 	find "$PRO_DIR" -regextype "posix-egrep" -regex ".*values-($langs)" -print0 | xargs -0 rm -rf
 
-	find "${PRO_DIR}/res_base" -regextype "posix-egrep" -regex ".*/app_icon\.png" -type f -print0 | xargs -0 rm -f
+	find "${APP_DIR}/src/main/res_base" -regextype "posix-egrep" -regex ".*/app_icon\.png" -type f -print0 | xargs -0 rm -f
 
 	local aidls
 	aidls=$(find "${APP_DIR}/src/main/aidl" -name "*.aidl" -type f)
@@ -1186,7 +1186,7 @@ do_sync() {
 	sync_ui
 	sync_url
 	sync_weblayer
-	sync_gen
+	#sync_gen
 
 	sync_assets
 	sync_libs
