@@ -329,7 +329,7 @@ sync_chrome() {
                 ${BASE_DIR}/chrome/lib/lifecycle/public/android/java/src/* \
 		"${APP_DIR}/src/main/java"
 
-	mkdir -p ${source_dir}/res_base
+	mkdir -p ${source_dir}/{res_base,res,res_download,res_night,res_vr,javatests_res,trichrome_res_dummy,chromedriver_webview_shell_test_res}
 
 	cp -r ${BASE_DIR}/chrome/android/java/res/* \
 	       "${source_dir}/res_base"
