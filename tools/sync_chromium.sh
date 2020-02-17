@@ -519,8 +519,8 @@ sync_url() {
 }
 
 sync_weblayer() {
-	cp -r ${BASE_DIR}/weblayer/browser/java/* \
-                ${BASE_DIR}/weblayer/public/javatests/* \
+	cp -r ${BASE_DIR}/weblayer/browser/java/org \
+                ${BASE_DIR}/weblayer/public/javatests/org \
                 ${BASE_DIR}/weblayer/shell/android/browsertests_apk/src/* \
                 ${BASE_DIR}/weblayer/shell/android/shell_apk/src/* \
                	"${APP_DIR}/src/main/java"
