@@ -280,10 +280,10 @@ sync_browser() {
 	        "${MODULES_DIR}/browser/src/main/ui_appmenu_res"
 
         cp -r ${BASE_DIR}/chrome/browser/ui/android/appmenu/internal/test/java/res/* \
-        	"${MODULES_DIR}/browser/src/main/ui_appmenu_test_res"
+        	"${MODULES_DIR}/browser/src/main/ui_appmenu_internal_test_res"
 
         cp -r ${BASE_DIR}/chrome/browser/ui/android/appmenu/java/res/* \
-        	"${MODULES_DIR}/browser/src/main/ui_appmenu_res"
+        	"${MODULES_DIR}/browser/src/main/ui_appmenu_internal_res"
 
         cp -r ${BASE_DIR}/chrome/browser/ui/android/styles/java/res/* \
         	"${MODULES_DIR}/browser/src/main/ui_styles_res"
