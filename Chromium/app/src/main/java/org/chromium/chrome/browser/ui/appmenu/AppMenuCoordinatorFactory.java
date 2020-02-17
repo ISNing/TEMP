@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium Authors. All rights reserved.
+// Copyright 2020 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 //
@@ -10,14 +10,8 @@ package org.chromium.chrome.browser.ui.appmenu;
 
 import android.content.Context;
 import android.view.View;
-
 import org.chromium.chrome.browser.lifecycle.ActivityLifecycleDispatcher;
 
 public class AppMenuCoordinatorFactory {
-    public static AppMenuCoordinator createAppMenuCoordinator(Context context,
-            ActivityLifecycleDispatcher activityLifecycleDispatcher,
-            MenuButtonDelegate buttonDelegate, AppMenuDelegate appMenuDelegate, View decorView,
-            View hardwareButtonAnchorView) {
-        return null;
-    }
+    static public AppMenuCoordinator createAppMenuCoordinator (Context context, ActivityLifecycleDispatcher activityLifecycleDispatcher, MenuButtonDelegate buttonDelegate, AppMenuDelegate appMenuDelegate, View decorView, View hardwareButtonAnchorView) { return null; }
 }

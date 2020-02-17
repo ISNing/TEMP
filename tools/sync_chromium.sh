@@ -532,7 +532,7 @@ sync_weblayer() {
 }
 
 sync_gen() {
-	echo "${RELEASE_DIR}/gen/android_webview/android_webview_product_config_java/generated_java \
+	echo -n ${RELEASE_DIR}/gen/android_webview/android_webview_product_config_java/generated_java \
                 ${RELEASE_DIR}/gen/android_webview/browser_java/generated_java \
                 ${RELEASE_DIR}/gen/android_webview/common_aidl_java/generated_java \
                 ${RELEASE_DIR}/gen/android_webview/common_commandline_java/generated_java \
@@ -1055,26 +1055,24 @@ sync_gen() {
                 ${RELEASE_DIR}/gen/weblayer/shell/android/weblayer_shell_apk/generated_java \
                 ${RELEASE_DIR}/gen/weblayer/shell/android/weblayer_shell_java/generated_java \
                 ${RELEASE_DIR}/gen/weblayer/shell/android/weblayer_shell_system_webview_apk/generated_java \
-                ${RELEASE_DIR}/gen/weblayer/shell/android/weblayer_support_apk/generated_java" | \
-                xargs -d" " -n1 -I{TD} sh -c "test -e TD && cp -r {TD}/* \"${APP_DIR}/src/main/java\""
-                
-
+                ${RELEASE_DIR}/gen/weblayer/shell/android/weblayer_support_apk/generated_java | \
+		xargs -d" " -n1 -I{TD} sh -c "test -e {TD} && cp -r {TD}/* ${APP_DIR}/src/main/java" || echo -n ""
 	mkdir -p ${MODULES_DIR}/gen/src/main/res
 
-	cp -r ${RELEASE_DIR}/gen/chrome/android/templates/chrome_version_xml/res/* \
-                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/h2o_j_unit_webapk_generate_res_background_xml/res/* \
-                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/javatests_webapk_generate_res_background_xml/res/* \
-                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/maps_go_webapk_generate_res_background_xml/res/* \
-                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/new_splash_webapk_generate_res_background_xml/res/* \
-                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/unbound_webapk_generate_res_background_xml/res/* \
-                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/webapk_generate_res_background_xml/res/* \
-                ${RELEASE_DIR}/gen/chrome/app/policy/android/* \
-                ${RELEASE_DIR}/gen/remoting/android/credits_resources_raw/res/* \
-                ${RELEASE_DIR}/obj/third_party/android_deps/com_android_support_design_java/res/* \
-                ${RELEASE_DIR}/obj/third_party/android_deps/com_android_support_gridlayout_v7_java/res/* \
-                ${RELEASE_DIR}/obj/third_party/android_deps/com_android_support_preference_v7_java/res/* \
-                ${RELEASE_DIR}/obj/third_party/android_deps/com_android_support_transition_java/res/* \
-                "${MODULES_DIR}/gen/src/main/res"
+	echo -n ${RELEASE_DIR}/gen/chrome/android/templates/chrome_version_xml/res \
+                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/h2o_j_unit_webapk_generate_res_background_xml/res \
+                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/javatests_webapk_generate_res_background_xml/res \
+                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/maps_go_webapk_generate_res_background_xml/res \
+                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/new_splash_webapk_generate_res_background_xml/res \
+                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/unbound_webapk_generate_res_background_xml/res \
+                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/webapk_generate_res_background_xml/res \
+                ${RELEASE_DIR}/gen/chrome/app/policy/android \
+                ${RELEASE_DIR}/gen/remoting/android/credits_resources_raw/res \
+                ${RELEASE_DIR}/obj/third_party/android_deps/com_android_support_design_java/res \
+                ${RELEASE_DIR}/obj/third_party/android_deps/com_android_support_gridlayout_v7_java/res \
+                ${RELEASE_DIR}/obj/third_party/android_deps/com_android_support_preference_v7_java/res \
+                ${RELEASE_DIR}/obj/third_party/android_deps/com_android_support_transition_java/res | \
+                xargs -d" " -n1 -I{TD} sh -c "test -e {TD} && cp -r {TD}/* ${MODULES_DIR}/gen/src/main/res" || echo -n ""
 }
 
 sync_aidl() {
@@ -1114,6 +1112,7 @@ sync_libs() {
 
 sync_jniLibs() {
 	local jni_libs_dir="${APP_DIR}/src/main/jniLibs/arm64-v8a"
+
 	mkdir -p "$jni_libs_dir"
 	cp ${RELEASE_DIR}/*.so "$jni_libs_dir"
 }
@@ -1187,7 +1186,7 @@ do_sync() {
 	sync_ui
 	sync_url
 	sync_weblayer
-	#sync_gen
+	sync_gen
 
 	sync_assets
 	sync_libs
