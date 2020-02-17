@@ -190,7 +190,7 @@ sync_components() {
 		"${MODULES_DIR}/components/cronet/src/main/smoketests_native"
 
 	cp -r ${components}/cronet/android/test/smoketests/res/platform_only/* \
-		"${MODULES_DIR}/components/cronet/smoketests_platform_only"
+		"${MODULES_DIR}/components/cronet/src/main/smoketests_platform_only"
 
 	cp -r ${components}/embedder_support/android/java/res/* \
 		"${MODULES_DIR}/components/embedder_support/src/main/res"
