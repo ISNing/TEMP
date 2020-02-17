@@ -70,7 +70,7 @@ sync_features() {
 
 	mkdir -p ${MODULES_DIR}/features/autofill_assistant/src/main/res
         mkdir -p ${MODULES_DIR}/features/autofill_assistant/src/main/res_poodle
-        mkdir -p ${MODULES_DIR}/features/keyboard_accessory/src/mainres
+        mkdir -p ${MODULES_DIR}/features/keyboard_accessory/src/main/res
         mkdir -p ${MODULES_DIR}/features/media_router/src/main/res
         mkdir -p ${MODULES_DIR}/features/start_surface/src/main/explore_res
         mkdir -p ${MODULES_DIR}/features/start_surface/src/main/res
