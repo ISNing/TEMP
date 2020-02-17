@@ -352,7 +352,7 @@ sync_chrome() {
 	cp -r ${BASE_DIR}/chrome/android/trichrome/res_dummy/* \
 		"${source_dir}/trichrome_res_dummy"
 	
-	cp -r chrome/test/chromedriver/test/webview_shell/java/res/* \
+	cp -r ${BASE_DIR}/chrome/test/chromedriver/test/webview_shell/java/res/* \
 		"${source_dir}/chromedriver_webview_shell_test_res"
 		
 	mkdir -p ${MODULES_DIR}/splash/src/main/{lib_common_res_splash,shell_apk_res}
