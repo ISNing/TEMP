@@ -386,7 +386,7 @@ sync_net() {
         mkdir -p ${MODULES_DIR}/net/src/main/unittest_support_res
 
 	cp -r ${BASE_DIR}/net/android/unittest_support/res/* \
-		"${MODULES_DIR}/feed/src/main/unittest_support_res"
+		"${MODULES_DIR}/net/src/main/unittest_support_res"
 }
 
 sync_printing() {
