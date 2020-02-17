@@ -518,15 +518,14 @@ sync_url() {
                	"${APP_DIR}/src/main/java"
 }
 
-sync_webplayer() {
+sync_weblayer() {
 	cp -r ${BASE_DIR}/weblayer/browser/java/* \
-                ${BASE_DIR}/weblayer/public/java/* \
                 ${BASE_DIR}/weblayer/public/javatests/* \
                 ${BASE_DIR}/weblayer/shell/android/browsertests_apk/src/* \
                 ${BASE_DIR}/weblayer/shell/android/shell_apk/src/* \
                	"${APP_DIR}/src/main/java"
 
-        mkdir -p ${MODULES_DIR}/webplayer/src/main/res
+        mkdir -p ${MODULES_DIR}/weblayer/src/main/res
 
 	cp -r ${BASE_DIR}/weblayer/public/java/res/* \
 		"${MODULES_DIR}/weblayer/src/main/res"
