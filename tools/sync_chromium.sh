@@ -1185,7 +1185,7 @@ do_sync() {
 	sync_tools
 	sync_ui
 	sync_url
-	sync_webplayer
+	sync_weblayer
 	sync_gen
 
 	sync_assets
