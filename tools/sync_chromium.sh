@@ -22,33 +22,48 @@ sync_android_webview() {
                 ${BASE_DIR}/android_webview/unittestjava/src/* \
 		"${APP_DIR}/src/main/java"
 
-	mkdir -p ${MODULES_DIR}/android_webview/res
-	mkdir -p ${MODULES_DIR}/android_webview/nonembedded_{res_devui,res_icon}
-	mkdir -p ${MODULES_DIR}/android_webview/test_shell_res
-	mkdir -p ${MODULES_DIR}/android_webview/automated_ui_tests_res
-	mkdir -p ${MODULES_DIR}/android_webview/system_webview_shell_apk_res
-	mkdir -p ${MODULES_DIR}/android_webview/webview_log_verbosifier_res
+	mkdir -p ${MODULES_DIR}/android_webview/base/src/main/res
+	mkdir -p ${MODULES_DIR}/android_webview/nonembedded/src/main/{res_devui,res_icon}
+	mkdir -p ${MODULES_DIR}/android_webview/test_shell/src/main/res
+	mkdir -p ${MODULES_DIR}/android_webview/tools/automated_ui_tests/src/main/res
+	mkdir -p ${MODULES_DIR}/android_webview/tools/system_webview_shell_apk/src/main/res
+	mkdir -p ${MODULES_DIR}/android_webview/tools/webview_log_verbosifier/src/main/res
 
 	cp -r ${BASE_DIR}/android_webview/java/res/* \
-		"${MODULES_DIR}/android_webview/res"
+		"${MODULES_DIR}/android_webview/base/src/main/res"
 
 	cp -r ${BASE_DIR}/android_webview/nonembedded/java/res_devui/* \
-		"${MODULES_DIR}/android_webview/nonembedded_res_devui"
+		"${MODULES_DIR}/android_webview/nonembedded/src/main/res_devui"
 
 	cp -r ${BASE_DIR}/android_webview/nonembedded/java/res_icon/* \
-		"${MODULES_DIR}/android_webview/nonembedded_res_icon"
+		"${MODULES_DIR}/android_webview/nonembedded/src/main/res_icon"
+
+	cp -r ${BASE_DIR}/android_webview/nonembedded/java/AndroidManifest.xml \
+		"${MODULES_DIR}/android_webview/nonembedded/src/main"
 
 	cp -r ${BASE_DIR}/android_webview/test/shell/res/* \
-		"${MODULES_DIR}/android_webview/test_shell_res"
+		"${MODULES_DIR}/android_webview/test_shell/src/main/res"
+
+	cp -r ${BASE_DIR}/android_webview/test/shell/AndroidManifest.xml \
+		"${MODULES_DIR}/android_webview/test_shell/src/main"
 
 	cp -r ${BASE_DIR}/android_webview/tools/automated_ui_tests/java/res/* \
-		"${MODULES_DIR}/android_webview/automated_ui_tests_res"
+		"${MODULES_DIR}/android_webview/tools/automated_ui_tests/src/main/res"
+
+	cp -r ${BASE_DIR}/android_webview/tools/automated_ui_tests/java/AndroidManifest.xml \
+		"${MODULES_DIR}/android_webview/tools/automated_ui_tests/src/main"
 
 	cp -r ${BASE_DIR}/android_webview/tools/system_webview_shell/apk/res/* \
-		"${MODULES_DIR}/android_webview/system_webview_shell_apk_res"
+		"${MODULES_DIR}/android_webview/tools/system_webview_shell_apk/src/main/res"
+
+	cp -r ${BASE_DIR}/android_webview/tools/system_webview_shell/apk/AndroidManifest.xml \
+		"${MODULES_DIR}/android_webview/tools/system_webview_shell_apk/src/main"
 
 	cp -r ${BASE_DIR}/android_webview/tools/webview_log_verbosifier/res/* \
-		"${MODULES_DIR}/android_webview/webview_log_verbosifier_res"
+		"${MODULES_DIR}/android_webview/tools/webview_log_verbosifier/src/main/res"
+
+	cp -r ${BASE_DIR}/android_webview/tools/webview_log_verbosifier/AndroidManifest.xml \
+		"${MODULES_DIR}/android_webview/tools/webview_log_verbosifier/src/main"
 }
 
 sync_features() {
@@ -83,6 +98,9 @@ sync_features() {
 	cp -r ${BASE_DIR}/chrome/android/features/autofill_assistant/java/res_poodle/* \
 		"${MODULES_DIR}/features/autofill_assistant/src/main/res_poodle"
 
+	cp -r ${BASE_DIR}/chrome/android/features/autofill_assistant/java/AndroidManifest.xml \
+		"${MODULES_DIR}/features/autofill_assistant/src/main"
+
 	cp -r ${BASE_DIR}/chrome/android/features/keyboard_accessory/internal/java/res/* \
 		"${MODULES_DIR}/features/keyboard_accessory/src/main/res"
 
@@ -100,31 +118,34 @@ sync_features() {
 
 	cp -r ${BASE_DIR}/chrome/android/features/vr/java/res/* \
 		"${MODULES_DIR}/features/vr/src/main/res"
+
+	cp -r ${BASE_DIR}/chrome/android/features/vr/java/AndroidManifest.xml \
+		"${MODULES_DIR}/features/vr/src/main"
 }
 
 sync_feed() {
 	cp -r ${BASE_DIR}/chrome/android/feed/core/java/src/* \
 		"${APP_DIR}/src/main/java"
 
-	mkdir -p ${MODULES_DIR}/feed/src/main/{res,library_basicstream_viewholders_res,library_basicstream_res,library_piet_res,library_sharedstream_menumeasurer_res,library_sharedstream_ui_res}
+	mkdir -p ${MODULES_DIR}/feed/{base,library_basicstream_viewholders,library_basicstream,library_piet,library_sharedstream_menumeasurer,library_sharedstream_ui}/src/main/res
 
 	cp -r ${BASE_DIR}/chrome/android/feed/core/java/res/* \
-		"${MODULES_DIR}/feed/src/main/res"
+		"${MODULES_DIR}/feed/base/src/main/res"
 
 	cp -r ${BASE_DIR}/chrome/android/feed/core/java/src/org/chromium/chrome/browser/feed/library/basicstream/internal/viewholders/res/* \
-		"${MODULES_DIR}/feed/src/main/library_basicstream_viewholders_res"
+		"${MODULES_DIR}/feed/library_basicstream_viewholders/src/main/res"
 
 	cp -r ${BASE_DIR}/chrome/android/feed/core/java/src/org/chromium/chrome/browser/feed/library/basicstream/res/* \
-		"${MODULES_DIR}/feed/src/main/library_basicstream_res"
+		"${MODULES_DIR}/feed/library_basicstream/src/main/res"
 
 	cp -r ${BASE_DIR}/chrome/android/feed/core/java/src/org/chromium/chrome/browser/feed/library/piet/res/* \
-		"${MODULES_DIR}/feed/src/main/library_piet_res"
+		"${MODULES_DIR}/feed/library_piet/src/main/res"
 
 	cp -r ${BASE_DIR}/chrome/android/feed/core/java/src/org/chromium/chrome/browser/feed/library/sharedstream/publicapi/menumeasurer/res/* \
-		"${MODULES_DIR}/feed/src/main/library_sharedstream_menumeasurer_res"
+		"${MODULES_DIR}/feed/library_sharedstream_menumeasurer/src/main/res"
 
 	cp -r ${BASE_DIR}/chrome/android/feed/core/java/src/org/chromium/chrome/browser/feed/library/sharedstream/ui/res/* \
-		"${MODULES_DIR}/feed/src/main/library_sharedstream_ui_res"
+		"${MODULES_DIR}/feed/library_sharedstream_ui/src/main/res"
 }
 
 sync_components() {
@@ -200,7 +221,7 @@ sync_components() {
 }
 
 sync_content() {
-	mkdir -p ${MODULES_DIR}/content/src/main/{base_res,res,shell_browsertests_apk_res,shell_res,shell_linker_test_apk_res,shell_apk_res}
+	mkdir -p ${MODULES_DIR}/content/{root,base,shell_browsertests_apk,shell,shell_linker_test_apk,shell_apk}/src/main/res
 
 	cp -r ${BASE_DIR}/content/public/android/java/src/* \
                 ${BASE_DIR}/content/shell/android/browsertests/src/* \
@@ -211,17 +232,23 @@ sync_content() {
 		"${APP_DIR}/src/main/java"
 
 	cp -r ${BASE_DIR}/content/public/android/java/strings \
-		"${MODULES_DIR}/content/src/main/base_res"
+		"${MODULES_DIR}/content/root/src/main/res"
 	cp -r ${BASE_DIR}/content/public/android/java/res/* \
-		"${MODULES_DIR}/content/src/main/res"
+		"${MODULES_DIR}/content/base/src/main/res"
 	cp -r ${BASE_DIR}/content/shell/android/browsertests_apk/res/* \
-		"${MODULES_DIR}/content/src/main/shell_browsertests_apk_res"
+		"${MODULES_DIR}/content/shell_browsertests_apk/src/main/res"
+	cp -r ${BASE_DIR}/content/shell/android/browsertests_apk/AndroidManifest.xml.jinja2 \
+		"${MODULES_DIR}/content/shell_browsertests_apk/src/main"
 	cp -r ${BASE_DIR}/content/shell/android/java/res/* \
-		"${MODULES_DIR}/content/src/main/shell_res"
+		"${MODULES_DIR}/content/shell/src/main/res"
+	cp -r ${RELEASE_DIR}/gen/content/shell/android/content_shell_manifest/AndroidManifest.xml \
+		"${MODULES_DIR}/content/shell/src/main"
 	cp -r ${BASE_DIR}/content/shell/android/linker_test_apk/res/* \
-		"${MODULES_DIR}/content/src/main/shell_linker_test_apk_res"
+		"${MODULES_DIR}/content/shell_linker_test_apk/src/main/res"
+	cp -r ${RELEASE_DIR}/gen/content/shell/android/linker_test_apk/AndroidManifest.xml \
+		"${MODULES_DIR}/content/shell_linker_test_apk/src/main"
 	cp -r ${BASE_DIR}/content/shell/android/shell_apk/res/* \
-		"${MODULES_DIR}/content/src/main/shell_apk_res"
+		"${MODULES_DIR}/content/shell_apk/src/main/res"
 
 	# local aidl_i="${APP_DIR}/src/main/aidl/org/chromium"
 	# mkdir -p "$aidl_i"
@@ -268,34 +295,35 @@ sync_browser() {
                 ${BASE_DIR}/chrome/browser/util/android/java/src/* \
                 "${APP_DIR}/src/main/java"
 
-	mkdir -p ${MODULES_DIR}/browser/src/main/{share_res,touch_to_fill_res,ui_appmenu_res,ui_appmenu_internal_res,ui_appmenu_internal_test_res,ui_styles_res,ui_styles_res_night,ui_widget_res,ui_widget_test_res}
+	mkdir -p ${MODULES_DIR}/browser/{share,touch_to_fill,ui_appmenu,ui_appmenu_internal,ui_appmenu_internal_test,ui_styles,ui_widget,ui_widget_test}/src/main/res
+	mkdir -p ${MODULES_DIR}/browser/ui_styles/res_night
 
 	cp -r ${BASE_DIR}/chrome/browser/share/android/java/res/* \
-		"${MODULES_DIR}/browser/src/main/share_res"
+		"${MODULES_DIR}/browser/share/src/main/res"
 
         cp -r ${BASE_DIR}/chrome/browser/touch_to_fill/android/internal/java/res/* \
-        	"${MODULES_DIR}/browser/src/main/touch_to_fill_res"
+        	"${MODULES_DIR}/browser/touch_to_fill/src/main/res"
 
         cp -r ${BASE_DIR}/chrome/browser/ui/android/appmenu/internal/java/res/* \
-	        "${MODULES_DIR}/browser/src/main/ui_appmenu_res"
+	        "${MODULES_DIR}/browser/ui_appmenu/src/main/res"
 
         cp -r ${BASE_DIR}/chrome/browser/ui/android/appmenu/internal/test/java/res/* \
-        	"${MODULES_DIR}/browser/src/main/ui_appmenu_internal_test_res"
+        	"${MODULES_DIR}/browser/ui_appmenu_internal_test/src/main/res"
 
         cp -r ${BASE_DIR}/chrome/browser/ui/android/appmenu/java/res/* \
-        	"${MODULES_DIR}/browser/src/main/ui_appmenu_internal_res"
+        	"${MODULES_DIR}/browser/ui_appmenu_internal/src/main/res"
 
         cp -r ${BASE_DIR}/chrome/browser/ui/android/styles/java/res/* \
-        	"${MODULES_DIR}/browser/src/main/ui_styles_res"
+        	"${MODULES_DIR}/browser/ui_styles/src/main/res"
 
         cp -r ${BASE_DIR}/chrome/browser/ui/android/styles/java/res_night/* \
-        	"${MODULES_DIR}/browser/src/main/ui_styles_res_night"
+        	"${MODULES_DIR}/browser/ui_styles/src/main/res_night"
 
         cp -r ${BASE_DIR}/chrome/browser/ui/android/widget/java/res/* \
-        	"${MODULES_DIR}/browser/src/main/ui_widget_res"
+        	"${MODULES_DIR}/browser/ui_widget/src/main/res"
 
         cp -r ${BASE_DIR}/chrome/browser/ui/android/widget/test/java/res/* \
-        	"${MODULES_DIR}/browser/src/main/ui_widget_test_res"
+        	"${MODULES_DIR}/browser/ui_widget_test/src/main/res"
 }
 
 sync_chrome() {
@@ -304,7 +332,7 @@ sync_chrome() {
 	local src_dir="${source_dir}/java"
 	local res_dir="${source_dir}/res"
 	
-	cp "${BASE_DIR}/build/android/gradle/AndroidManifest.xml" \
+	cp "${RELEASE_DIR}/gen/chrome/android/monochrome_public_apk/AndroidManifest.xml" \
 		"${APP_DIR}/src/main"
 
 	cp -r ${BASE_DIR}/base/android/java/src/* \
@@ -322,14 +350,10 @@ sync_chrome() {
                 ${BASE_DIR}/chrome/android/public/crypto/java/src/* \
                 ${BASE_DIR}/chrome/android/public/profiles/java/src/* \
                 ${BASE_DIR}/chrome/android/third_party/compositor_animator/java/src/* \
-                ${BASE_DIR}/chrome/android/webapk/libs/client/src/* \
-                ${BASE_DIR}/chrome/android/webapk/libs/common/src/* \
-                ${BASE_DIR}/chrome/android/webapk/libs/runtime_library/src/* \
-                ${BASE_DIR}/chrome/android/webapk/shell_apk/src/* \
                 ${BASE_DIR}/chrome/lib/lifecycle/public/android/java/src/* \
 		"${APP_DIR}/src/main/java"
 
-	mkdir -p ${source_dir}/{res_base,res,res_download,res_night,res_vr,javatests_res,trichrome_res_dummy,chromedriver_webview_shell_test_res}
+	mkdir -p ${source_dir}/{res_base,res,res_download,res_night,res_vr,javatests_res,trichrome_res_dummy,chromedriver_webview_shell_test_res,gen_res}
 
 	cp -r ${BASE_DIR}/chrome/android/java/res/* \
 	       "${source_dir}/res_base"
@@ -351,28 +375,54 @@ sync_chrome() {
 
 	cp -r ${BASE_DIR}/chrome/android/trichrome/res_dummy/* \
 		"${source_dir}/trichrome_res_dummy"
+
+	mkdir -p ${MODULES_DIR}/chromedriver/webview_shell_test/src/main/res
 	
 	cp -r ${BASE_DIR}/chrome/test/chromedriver/test/webview_shell/java/res/* \
-		"${source_dir}/chromedriver_webview_shell_test_res"
-		
-	mkdir -p ${MODULES_DIR}/webapk/src/main/{lib_common_res_splash,shell_apk_res}
+		"${source_dir}/chromedriver/webview_shell_test/src/main/res"
 
-	cp -r ${BASE_DIR}/chrome/android/webapk/libs/common/res_splash/* \
-		"${MODULES_DIR}/webapk/src/main/lib_common_res_splash"
+	echo -n ${RELEASE_DIR}/gen/chrome/android/templates/chrome_version_xml/res \
+		${RELEASE_DIR}/gen/chrome/app/policy/android | \
+		xargs -d" " -n1 -I{TD} sh -c "test -e {TD} && cp -r {TD}/* ${source_dir}/gen_res" || echo -n ""
 
-	cp -r ${BASE_DIR}/chrome/android/webapk/shell_apk/res/* \
-		"${MODULES_DIR}/webapk/src/main/shell_apk_res"
+	sync_webapk
 }
 
+sync_webapk() {
+	cp -r ${BASE_DIR}/chrome/android/webapk/libs/client/src/* \
+                ${BASE_DIR}/chrome/android/webapk/libs/common/src/* \
+                ${BASE_DIR}/chrome/android/webapk/libs/runtime_library/src/* \
+                ${BASE_DIR}/chrome/android/webapk/shell_apk/src/* \
+	"${APP_DIR}/src/main/java"
 
-sync_device() {
+	mkdir -p ${MODULES_DIR}/webapk/{lib_common/src/main/res_splash,shell_apk/src/main/{res,gen_res}}
+
+	cp -r ${BASE_DIR}/chrome/android/webapk/libs/common/res_splash/* \
+		"${MODULES_DIR}/webapk/lib_common/src/main/res_splash"
+
+	cp -r ${BASE_DIR}/chrome/android/webapk/shell_apk/res/* \
+		"${MODULES_DIR}/webapk/shell_apk/src/main/res"
+
+	cp -r ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/webapk_generate_manifest/AndroidManifest.xml \
+		"${MODULES_DIR}/webapk/shell_apk/src/main"
+
+	echo -n ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/h2o_j_unit_webapk_generate_res_background_xml/res \
+                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/javatests_webapk_generate_res_background_xml/res \
+                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/maps_go_webapk_generate_res_background_xml/res \
+                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/new_splash_webapk_generate_res_background_xml/res \
+                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/unbound_webapk_generate_res_background_xml/res \
+                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/webapk_generate_res_background_xml/res | \
+                xargs -d" " -n1 -I{TD} sh -c "test -e {TD} && cp -r {TD}/* ${MODULES_DIR}/webapk/shell_apk/src/main/gen_res" || echo -n ""
+}
+
+sync_mojo() {
 	cp -r ${BASE_DIR}/mojo/public/java/base/src/* \
                 ${BASE_DIR}/mojo/public/java/bindings/src/* \
                 ${BASE_DIR}/mojo/public/java/system/src/* \
                	"${APP_DIR}/src/main/java"
 }
 
-sync_mojo() {
+sync_device() {
 	cp -r ${BASE_DIR}/device/bluetooth/android/java/src/* \
                 ${BASE_DIR}/device/gamepad/android/java/src/* \
                 ${BASE_DIR}/device/vr/android/java/src/* \
@@ -399,10 +449,13 @@ sync_remoting() {
                 ${BASE_DIR}/remoting/android/java/src/* \
                	"${APP_DIR}/src/main/java"
 
-        mkdir -p ${MODULES_DIR}/remoting/src/main/res
+        mkdir -p ${MODULES_DIR}/remoting/src/main/{res,gen_res}
 
 	cp -r ${BASE_DIR}/remoting/android/java/res/* \
 		"${MODULES_DIR}/remoting/src/main/res"
+
+	echo -n ${RELEASE_DIR}/gen/remoting/android/credits_resources_raw/res | \
+                xargs -d" " -n1 -I{TD} sh -c "test -e {TD} && cp -r {TD}/* ${MODULES_DIR}/remoting/src/main/gen_res" || echo -n ""
 }
 
 sync_services() {
@@ -1057,22 +1110,6 @@ sync_gen() {
                 ${RELEASE_DIR}/gen/weblayer/shell/android/weblayer_shell_system_webview_apk/generated_java \
                 ${RELEASE_DIR}/gen/weblayer/shell/android/weblayer_support_apk/generated_java | \
 		xargs -d" " -n1 -I{TD} sh -c "test -e {TD} && cp -r {TD}/* ${APP_DIR}/src/main/java" || echo -n ""
-	mkdir -p ${MODULES_DIR}/gen/src/main/res
-
-	echo -n ${RELEASE_DIR}/gen/chrome/android/templates/chrome_version_xml/res \
-                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/h2o_j_unit_webapk_generate_res_background_xml/res \
-                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/javatests_webapk_generate_res_background_xml/res \
-                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/maps_go_webapk_generate_res_background_xml/res \
-                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/new_splash_webapk_generate_res_background_xml/res \
-                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/unbound_webapk_generate_res_background_xml/res \
-                ${RELEASE_DIR}/gen/chrome/android/webapk/shell_apk/webapk_generate_res_background_xml/res \
-                ${RELEASE_DIR}/gen/chrome/app/policy/android \
-                ${RELEASE_DIR}/gen/remoting/android/credits_resources_raw/res \
-                ${RELEASE_DIR}/obj/third_party/android_deps/com_android_support_design_java/res \
-                ${RELEASE_DIR}/obj/third_party/android_deps/com_android_support_gridlayout_v7_java/res \
-                ${RELEASE_DIR}/obj/third_party/android_deps/com_android_support_preference_v7_java/res \
-                ${RELEASE_DIR}/obj/third_party/android_deps/com_android_support_transition_java/res | \
-                xargs -d" " -n1 -I{TD} sh -c "test -e {TD} && cp -r {TD}/* ${MODULES_DIR}/gen/src/main/res" || echo -n ""
 }
 
 sync_aidl() {
