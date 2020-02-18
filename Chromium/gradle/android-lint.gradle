@@ -1,8 +1,0 @@
-android {
-    lintOptions {
-        abortOnError false
-        checkReleaseBuilds false
-        ignoreWarnings true
-        disable 'MissingTranslation'
-    }
-}

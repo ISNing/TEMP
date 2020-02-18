@@ -332,7 +332,7 @@ sync_chrome() {
 	local src_dir="${source_dir}/java"
 	local res_dir="${source_dir}/res"
 	
-	cp "${RELEASE_DIR}/gen/chrome/android/monochrome_public_apk/AndroidManifest.xml" \
+	cp "${RELEASE_DIR}/gen/chrome/android/monochrome_public_apk_manifest/AndroidManifest.xml" \
 		"${APP_DIR}/src/main"
 
 	cp -r ${BASE_DIR}/base/android/java/src/* \
@@ -377,9 +377,9 @@ sync_chrome() {
 		"${source_dir}/trichrome_res_dummy"
 
 	mkdir -p ${MODULES_DIR}/chromedriver/webview_shell_test/src/main/res
-	
+
 	cp -r ${BASE_DIR}/chrome/test/chromedriver/test/webview_shell/java/res/* \
-		"${source_dir}/chromedriver/webview_shell_test/src/main/res"
+		"${MODULES_DIR}/chromedriver/webview_shell_test/src/main/res"
 
 	echo -n ${RELEASE_DIR}/gen/chrome/android/templates/chrome_version_xml/res \
 		${RELEASE_DIR}/gen/chrome/app/policy/android | \

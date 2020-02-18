@@ -1,2 +1,0 @@
-include ':android_webview', ':app', ':browser', ':components:autofill', ':components:browsertests_apk', ':components:cronet', ':components:embedder_support', ':content', ':features:autofill_assistant', ':features:keyboard_accessory', ':features:media_router', ':features:start_surface', ':features:tab_ui', ':features:vr', ':feed', ':gen',
-        ':media', ':net', ':feed', ':remoting', ':third_party:android_data_chart', ':third_party:android_media', ':third_party:custom_tabs_client', ':tools', ':ui', ':webapk', ':webplayer'

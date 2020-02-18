@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2015 The Chromium Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+-->
+
+<!-- AndroidManifest.xml is generated in two mustache generation passes.
+     Pass #1 with square bracket delimiter to generate AndroidManifest.xml to
+             be uploaded to the WebAPK Minting Server. Fields which cannot be
+             customized by the WebAPK server on a per-site basis are filled in.
+     Pass #2 with curly bracket delimiter fills in the remaining fields. The
+             generated AndroidManifest.xml is for the test APK (WebApk.apk,
+             UnboundWebApk.apk ...). These APKs are for local testing and are
+             not uploaded to the WebAPK server.
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="org.chromium.webapk"
+    android:versionCode="1"
+    android:versionName="1.0" >
+    
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="29" />
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/short_name"
+        android:allowBackup="false"
+        android:supportsRtl="true">
+        <activity android:name="org.chromium.webapk.shell_apk.TransparentLauncherActivity"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                  android:excludeFromRecents="true"
+                  android:relinquishTaskIdentity="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+                <category android:name="android.intent.category.BROWSABLE"></category>
+                <data android:scheme="https" android:host="pwa.rocks" android:pathPrefix="/"></data>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+                <data android:scheme="https" android:host="pwa.rocks" android:pathPrefix="/"></data>
+            </intent-filter>
+            
+         </activity>
+
+        <activity android:name="org.chromium.webapk.shell_apk.MainActivity"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                  
+                  android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts" />
+        </activity>
+
+        <activity-alias android:name="org.chromium.webapk.shell_apk.ShareActivity0"
+                  android:label="Share Text and Images"
+                  android:targetActivity="org.chromium.webapk.shell_apk.TransparentLauncherActivity">
+          <meta-data android:name="org.chromium.webapk.shell_apk.shareAction" android:value="https://pwa.rocks/share.html" />
+          <meta-data android:name="org.chromium.webapk.shell_apk.shareMethod" android:value="POST" />
+          <meta-data android:name="org.chromium.webapk.shell_apk.shareParamTitle" android:value="title" />
+          <meta-data android:name="org.chromium.webapk.shell_apk.shareParamText" android:value="text" />
+          <meta-data android:name="org.chromium.webapk.shell_apk.shareParamUrl" android:value="url" />
+          <meta-data android:name="org.chromium.webapk.shell_apk.shareEnctype" android:value="multipart/form-data" />
+          <meta-data android:name="org.chromium.webapk.shell_apk.shareParamNames" android:value="[&quot;param_name&quot;]" />
+          <meta-data android:name="org.chromium.webapk.shell_apk.shareParamAccepts" android:value="[[&quot;image/*&quot;]]" />
+          <intent-filter>
+            <action android:name="android.intent.action.SEND" />
+            <action android:name="android.intent.action.SEND_MULTIPLE" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <data android:mimeType="image/*" />
+          </intent-filter>
+        </activity-alias>
+        <meta-data android:name="org.chromium.webapk.shell_apk.shellApkVersion" android:value="120" />
+        <meta-data android:name="org.chromium.webapk.shell_apk.runtimeHost" android:value="com.google.android.apps.chrome" />
+        <meta-data android:name="org.chromium.webapk.shell_apk.runtimeHostApplicationName" android:value="Chromium" />
+        <meta-data android:name="org.chromium.webapk.shell_apk.startUrl" android:value="https://pwa.rocks/" />
+        <meta-data android:name="org.chromium.webapk.shell_apk.scope" android:value="https://pwa.rocks/" />
+        <meta-data android:name="org.chromium.webapk.shell_apk.displayMode" android:value="standalone" />
+        <meta-data android:name="org.chromium.webapk.shell_apk.orientation" android:value="portrait" />
+        <meta-data android:name="org.chromium.webapk.shell_apk.themeColor" android:value="2147483648L" />
+
+        <!-- Empty if the Web Manifest does not provide a background color. -->
+        <meta-data android:name="org.chromium.webapk.shell_apk.backgroundColor" android:value="2147483648L" />
+
+        <meta-data android:name="org.chromium.webapk.shell_apk.defaultBackgroundColorId" android:resource="@color/webapp_default_bg" />
+        <meta-data android:name="org.chromium.webapk.shell_apk.iconId" android:resource="@mipmap/app_icon" />
+        <meta-data android:name="org.chromium.webapk.shell_apk.maskableIconId" android:resource="@mipmap/maskable_app_icon"/>
+        <meta-data android:name="org.chromium.webapk.shell_apk.splashId" android:resource="@drawable/splash_icon" />
+        <meta-data android:name="org.chromium.webapk.shell_apk.isSplashIconMaskableBooleanId" android:resource="@bool/is_splash_icon_maskable"/>
+        <meta-data android:name="org.chromium.webapk.shell_apk.distributor" android:value="browser" />
+
+        <meta-data android:name="org.chromium.webapk.shell_apk.iconUrlsAndIconMurmur2Hashes" android:value="http://www.pwa.rocks/icon1.png 0 http://www.pwa.rocks/icon2.png 0" />
+
+        <meta-data android:name="org.chromium.webapk.shell_apk.webManifestUrl" android:value="https://pwa.rocks/pwa.webmanifest" />
+        
+        <service
+            android:name="org.chromium.webapk.shell_apk.WebApkServiceFactory"
+            android:exported="true"
+            tools:ignore="ExportedService">
+            <intent-filter>
+              <action android:name="android.intent.action.MAIN" />
+              <category android:name="android.intent.category.WEBAPK_API" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="org.chromium.webapk.shell_apk.IdentityService"
+            android:exported="true"
+            tools:ignore="ExportedService">
+            <intent-filter>
+              <action android:name="org.webapk.IDENTITY_SERVICE_API" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>
